@@ -28,9 +28,17 @@ Each skill is self-contained (its own `references/`). They share state through
 `AVATAR-<NAME>.md` files at the repo root, written by `heygen-avatar` and read
 by `heygen-video`.
 
+`.mcp.json` at the repo root is upstream's own, unmodified: it declares
+HeyGen's remote MCP server (`https://mcp.heygen.com/mcp/v1/`). MCP is the
+skills' preferred transport — OAuth, no API key, billed against HeyGen plan
+credits rather than API credits. First connection prompts for authorization.
+
 `RUNTIME-CONTRACT.md` in this directory is upstream's root `CLAUDE.md`, kept
 for reference. It is deliberately *not* installed at the repo root, so it
 cannot be mistaken for this project's own `CLAUDE.md`.
+
+Not vendored from upstream: `docs/heygen/SETUP.md`, `docs/heygen/AVATAR-BRIEF.md`
+and `scripts/heygen-preflight.sh` are local to this repo.
 
 ## Upgrading
 
@@ -41,6 +49,7 @@ for d in heygen-avatar heygen-video heygen-translate; do
   cp -R "/tmp/heygen-skills/$d" ".claude/skills/$d"
 done
 cp /tmp/heygen-skills/CLAUDE.md docs/heygen/RUNTIME-CONTRACT.md
+cp /tmp/heygen-skills/.mcp.json .mcp.json
 ```
 
 Then update the version/commit in the table above. Re-read the changed
