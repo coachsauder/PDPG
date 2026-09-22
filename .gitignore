@@ -1,0 +1,11 @@
+# Secrets — never commit HeyGen (or any) API keys
+.env
+.env.*
+!.env.example
+.heygen/
+
+# Generated video/audio output
+*.mp4
+*.webm
+*.mov
+*.wav
